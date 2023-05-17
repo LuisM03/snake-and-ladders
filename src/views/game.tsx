@@ -146,26 +146,6 @@ export default function Game() {
           <img src={Leadder3} alt="" className="absolute w-10 bottom-44 left-[330px]" />
           <img src={Leadder2} alt="" className="absolute w-10 top-20 right-14 rotate-[24deg]" />
           <img src={Leadder3} alt="" className="absolute w-10 top-10 left-[400px]" />
-          <img src={Start} alt="" className="absolute w-10 top-[20px] left-60"/>
-          <img src={Start} alt="" className="absolute w-10 bottom-[20px] left-24"/>
-          <img src={Start} alt="" className="absolute w-10 bottom-[90px] left-24"/>
-          <img src={Start} alt="" className="absolute w-10 bottom-40 left-64"/>
-          <img src={Start} alt="" className="absolute w-10 bottom-[300px] left-64"/>
-          <img src={Start} alt="" className="absolute w-10 bottom-[370px] left-44"/>
-          <img src={Start} alt="" className="absolute w-10 bottom-[380px] right-64"/>
-          <img src={Start} alt="" className="absolute w-10 top-20 right-[100px]"/>
-          <img src={Start} alt="" className="absolute w-10 top-6 right-[175px]"/>
-          <img src={Start} alt="" className="absolute w-10 top-40 right-[180px]"/>
-          <img src={Start} alt="" className="absolute w-10 top-40 left-[180px]"/>
-          <img src={Start} alt="" className="absolute w-10 top-24 left-[330px]"/>
-          <img src={Start} alt="" className="absolute w-10 top-60 left-[20px]"/>
-          <img src={Start} alt="" className="absolute w-10 top-56 right-[24px]"/>
-          <img src={Start} alt="" className="absolute w-10 top-60 left-[400px]"/>
-          <img src={Start} alt="" className="absolute w-10 bottom-60 left-[100px]"/>
-          <img src={Start} alt="" className="absolute w-10 bottom-60 left-[400px]"/>
-          <img src={Start} alt="" className="absolute w-10 bottom-40 right-[180px]"/>
-          <img src={Start} alt="" className="absolute w-10 bottom-6 right-[100px]"/>
-          <img src={Start} alt="" className="absolute w-10 bottom-24 right-[330px]"/>
         </div>
         <Dados questions={data} />
       </main>

@@ -1,10 +1,9 @@
-import { ramdonNumbers, ramdonNumber } from "../../utils/contentFunctions"
-import { useAppDispatch, useAppSelector } from "../../store/hooks"
+import { useAppDispatch } from "../../store/hooks"
 import { positionMove } from "../../store/slices/player/playerSlice"
 import { growWins, growLoss } from "../../store/slices/questions/questionsSlice"
 import { useState, Fragment } from "react"
 import { Dialog, Transition } from '@headlessui/react'
-
+import { ramdonNumbers } from '../../utils/contentFunctions'
 
 
 interface Question {
@@ -15,16 +14,15 @@ interface Question {
 }
 
 interface Props {
-  questions: [] 
+  questions: Question[] 
 }
 
 export default function Dados({questions}: Props){
   const dispatch = useAppDispatch()
   const [number, setNumber] = useState(0)
-  const [utilizados, setUtilizados] = useState<number[]>([]);
-  const [question, setQuestion] = useState([]) 
+  const [question, setQuestion] = useState<Question>({id:'', question: "", answer: "", category:""}) 
   const [answer, setAnswer] = useState("")
-  const players = useAppSelector((state) => state.players)
+  // const players = useAppSelector((state) => state.players)
 
   const [isOpen, setIsOpen] = useState(false)
 
@@ -50,14 +48,7 @@ export default function Dados({questions}: Props){
           const number = ramdonNumbers();
           setNumber(number)
           generar_pregunta_aleatoria()
-          if((players.x + number === 2 && players.y === 0) || (players.x + number === 9 && players.y === 0)){
-            dispatch(positionMove(number))
-          }else if((number - (10 - players.x) === 5 && players.y + 1 === 1) || (players.x - number === 2 && players.y === 1)){
-            dispatch(positionMove(number))
-          }
-          else {
-            openModal()
-          }
+          openModal()
         }}>
         🎲 Tirar el dado
       </button>
