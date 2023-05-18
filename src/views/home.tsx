@@ -21,6 +21,7 @@ export default function Home(){
         <div>
           <h1 className='text-center font-bold text-slate-900 text-7xl'>Serpientes y Escaleras</h1>
         </div>
+        <p className='max-w-md text-center text-gray-500'>Ahora puedes iniciar una nueva partida o compartir mediante un QR.</p>
         <div className="flex gap-2 items-center justify-center">
           <Link to={'/game'} className='border rounded px-4 py-2 hover:bg-gray-50 bg-white'>Ir al juego</Link>
           <button className='border rounded px-4 py-2 hover:bg-gray-50 bg-white' onClick={()=>openModal()}>Compartir juego</button>

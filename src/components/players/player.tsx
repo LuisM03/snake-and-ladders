@@ -1,4 +1,4 @@
-import Players from '../../assets/Bishop Black.svg'
+import Players from './player.png'
 import { useAppSelector } from '../../store/hooks'
 export default function Player() {
 
@@ -8,10 +8,10 @@ export default function Player() {
     <img 
       src={Players} 
       alt="" 
-      className={`w-14 absolute transition ease-in-out -left-[60px] z-10`}
+      className={`w-14 absolute transition ease-in-out bottom-1 -left-[60px] z-10`}
       style={
         {
-          transform: `translate(${positions.x * 76}px, -${positions.y * 73}px)`
+          transform: `translate(${positions.x * 74}px, -${positions.y * 70}px)`
         }
       }
     />

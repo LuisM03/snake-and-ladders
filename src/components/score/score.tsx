@@ -2,7 +2,7 @@ import { useAppSelector, useAppDispatch } from "../../store/hooks"
 import { useEffect, useState, Fragment } from "react"
 import { Dialog, Transition } from '@headlessui/react'
 import { returnGame } from "../../store/slices/player/playerSlice"
-
+import { finishedGames } from "../../store/slices/questions/questionsSlice"
 
 export default function Dados(){
 
@@ -27,9 +27,10 @@ export default function Dados(){
   }, [players])
 
   return (
-    <div className="w-full flex items-center justify-between my-4">
+
+    <div className="flex fixed bottom-[140px] right-10 flex-col items-end gap-2">
       <p className="border rounded px-4 py-1 bg-white text-gray-500"><span className="font-medium">Score</span> {scores.wins * 100}</p>
-      <div className="flex items-center gap-2">
+      <div className="flex flex-col items-end gap-2">
         <p className="border rounded px-4 py-1 bg-white text-gray-500"><span className="font-medium">Ganadas </span>{scores.wins}</p>
         <p className="border rounded px-4 py-1 bg-white text-gray-500"><span className="font-medium">Pérdidas </span>{scores.loss}</p>
       </div>
@@ -73,6 +74,7 @@ export default function Dados(){
                         className="w-full inline-flex justify-center rounded-md border border-transparent bg-blue-500 px-4 py-2 text-sm font-medium text-white hover:bg-blue-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-greeb-700 focus-visible:ring-offset-2"
                         onClick={()=> {
                           dispatch(returnGame())
+                          dispatch(finishedGames())
                           closeModal()
                         }}
                       >

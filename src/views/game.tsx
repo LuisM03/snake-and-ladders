@@ -28,10 +28,9 @@ export default function Game() {
   },  [])
 
   return (
-    <div className="min-h-screen my-auto">
-      <main className="flex flex-col items-center justify-center max-w-screen-md mx-auto my-5">
-        <Score />
-        
+    <div className="">
+      <div className="min-h-screen my-auto">
+      <main className="flex flex-col items-center max-w-screen-md my-5 mx-auto">
         <div id='contenedor' className="w-full border p-2 rounded mt-2 grid grid-cols-10 bg-white relative">
           <div className='bg-red-500 w-full h-[70px] pl-1 text-white text-[20px]'>100</div>
           <div className='bg-blue-500 w-full h-[70px] pl-1 text-white text-[20px]'>99</div>
@@ -146,9 +145,31 @@ export default function Game() {
           <img src={Leadder3} alt="" className="absolute w-10 bottom-44 left-[330px]" />
           <img src={Leadder2} alt="" className="absolute w-10 top-20 right-14 rotate-[24deg]" />
           <img src={Leadder3} alt="" className="absolute w-10 top-10 left-[400px]" />
+          <img src={Start} alt="" className="absolute w-10 bottom-6 left-[400px]" />
+          <img src={Start} alt="" className="absolute w-10 bottom-6 left-[175px]" />
+          <img src={Start} alt="" className="absolute w-10 bottom-24 right-[100px]" />
+          <img src={Start} alt="" className="absolute w-10 bottom-24 left-[325px]" />
+          <img src={Start} alt="" className="absolute w-10 bottom-40 left-[250px]" />
+          <img src={Start} alt="" className="absolute w-10 bottom-40 right-[175px]" />
+          <img src={Start} alt="" className="absolute w-10 bottom-60 right-[325px]" />
+          <img src={Start} alt="" className="absolute w-10 bottom-60 left-[100px]" />
+          <img src={Start} alt="" className="absolute w-10 top-[370px] left-[175px]" />
+          <img src={Start} alt="" className="absolute w-10 top-[370px] right-[175px]" />
+          <img src={Start} alt="" className="absolute w-10 top-[300px] right-[325px]" />
+          <img src={Start} alt="" className="absolute w-10 top-[300px] right-[175px]" />
+          <img src={Start} alt="" className="absolute w-10 top-[300px] left-[175px]" />
+          <img src={Start} alt="" className="absolute w-10 top-[230px] left-[100px]" />
+          <img src={Start} alt="" className="absolute w-10 top-[230px] right-[250px]" />
+          <img src={Start} alt="" className="absolute w-10 top-[160px] right-[100px]" />
+          <img src={Start} alt="" className="absolute w-10 top-[160px] left-[175px]" />
+          <img src={Start} alt="" className="absolute w-10 top-[95px] left-[250px]" />
+          <img src={Start} alt="" className="absolute w-10 top-[95px] right-[250px]" />
+          <img src={Start} alt="" className="absolute w-10 top-6 right-[400px]" />
         </div>
-        <Dados questions={data} />
-      </main>
+        </main>
+      </div>
+      <Score />
+      <Dados questions={data} />
     </div>
   );
 }

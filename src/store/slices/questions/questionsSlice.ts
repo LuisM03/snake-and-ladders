@@ -20,9 +20,13 @@ export const questionsSlice = createSlice({
     },
     growLoss: (state, action: PayloadAction<number>) => {
       state.loss += action.payload;
+    },
+    finishedGames: (state) =>{
+      state.wins = 0;
+      state.loss = 0;
     }
   }
 })
 
-export const { growWins, growLoss } = questionsSlice.actions
+export const { growWins, growLoss, finishedGames } = questionsSlice.actions
 export default questionsSlice.reducer

@@ -3,14 +3,11 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 interface PositionPlayer {
   x: number;
   y: number;
-  comodin: number;
-  gamesWon?: number;
 }
 
 const initialState: PositionPlayer = {
   x: 0,
   y: 0,
-  comodin: 0,
 }
 
 export const playerSlice = createSlice({
@@ -20,6 +17,7 @@ export const playerSlice = createSlice({
     returnGame: (state) => {
       state.x = 0;
       state.y = 0;
+      
     },
     positionMove: (state, action: PayloadAction<number>) => {
       
@@ -88,13 +86,6 @@ export const playerSlice = createSlice({
         if(state.y === 7 && state.x === 6){
           state.x = 5;
           state.y = 9;
-        }
-        
-        if(state.x + action.payload === 2 && state.y === 0){
-          state.comodin = 2;
-        }
-        if(state.x  + action.payload === 9 && state.y === 0){
-          state.comodin = 2;
         }
     }   
   }

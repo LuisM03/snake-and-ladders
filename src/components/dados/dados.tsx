@@ -4,9 +4,9 @@ import { growWins, growLoss } from "../../store/slices/questions/questionsSlice"
 import { useState, Fragment } from "react"
 import { Dialog, Transition } from '@headlessui/react'
 import { ramdonNumbers } from '../../utils/contentFunctions'
-
-
-interface Question {
+import { useAppSelector } from "../../store/hooks"
+import { verifyPosition } from "../../utils/playerPositionVerify"
+export interface Question {
   id: string,
   question: string,
   answer: string
@@ -20,9 +20,9 @@ interface Props {
 export default function Dados({questions}: Props){
   const dispatch = useAppDispatch()
   const [number, setNumber] = useState(0)
-  const [question, setQuestion] = useState<Question>({id:'', question: "", answer: "", category:""}) 
+  const [question, setQuestion] = useState<Question>({id: '', question:'', answer: '', category:''}) 
   const [answer, setAnswer] = useState("")
-  // const players = useAppSelector((state) => state.players)
+  const players = useAppSelector((state) => state.players)
 
   const [isOpen, setIsOpen] = useState(false)
 
@@ -39,16 +39,23 @@ export default function Dados({questions}: Props){
     setQuestion(questions[indice]);
   };
 
+  
+
   return (
-    <div className="w-full mt-5 flex flex-col items-center">
-      <p>{number}</p>
+    <div className="fixed bottom-10 right-10 mt-5 flex flex-col items-center">
+      <p className="text-xl mb-2">{number}</p>
       <button 
         className="border w-full rounded py-2 px-4 bg-slate-800 text-white "
         onClick={() => {
           const number = ramdonNumbers();
           setNumber(number)
           generar_pregunta_aleatoria()
-          openModal()
+          
+          if(verifyPosition(number, players)){
+            dispatch(positionMove(number))
+          }else{
+            openModal()
+          }
         }}>
         🎲 Tirar el dado
       </button>
@@ -85,32 +92,49 @@ export default function Dados({questions}: Props){
                       if(question.answer === answer){
                         dispatch(positionMove(number))
                         dispatch(growWins(1))
+                        closeModal()
                       }else{
                         dispatch(growLoss(1))
+                        closeModal()
                       }
-                      closeModal()
+                      
                     }
                   }>
                     <Dialog.Title
                       as="h3"
-                      className="text-lg font-medium leading-6 text-gray-900"
+                      className="text-lg font-medium leading-6 text-gray-900 mb-5"
                     >
-                      <p>{question.question}</p>
+                      <p className="w-full text-center">{question['question']}</p>
                     </Dialog.Title>
                     <div className="mt-2">
-                      <input type="text" name="resp" placeholder="Responde aquí" className="w-full border px-4 py-2" onChange={(e) => setAnswer(e.target.value)}/>
+                      <input type="text" name="resp" placeholder="Responde aquí" className="w-full border px-4 py-2" onChange={(e) => setAnswer(e.target.value)} required/>
                     </div>
 
                     <div className="mt-4">
                       <button
                         type="submit"
-                        className="w-full inline-flex justify-center rounded-md border border-transparent bg-blue-500 px-4 py-2 text-sm font-medium text-white hover:bg-blue-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-greeb-700 focus-visible:ring-offset-2"
-                        onClick={closeModal}
+                        className="w-full inline-flex justify-center rounded-md border border-transparent bg-slate-800 px-4 py-2 text-sm font-medium text-white hover:bg-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-greeb-700 focus-visible:ring-offset-2"
                       >
                         Enviar respuesta
                       </button>
                     </div>
-
+                    <div className="mt-2">
+                      <button
+                        className="w-full inline-flex justify-center rounded-md border border-transparent bg-red-500 px-4 py-2 text-sm font-medium text-white hover:bg-red-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-greeb-700 focus-visible:ring-offset-2"
+                        onClick={() =>
+                          {
+                            if(question.answer === answer){
+                              //
+                            }else{
+                              dispatch(growLoss(1))
+                              closeModal()
+                            }
+                          }
+                        }
+                      >
+                        No sé la respuesta
+                      </button>
+                    </div>
                   </form>
                 </Dialog.Panel>
               </Transition.Child>
