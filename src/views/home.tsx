@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { useState, Fragment } from "react"
 import { Dialog, Transition } from '@headlessui/react'
 import QRCode from "react-qr-code";
+import Rules from '../components/home/rules';
 
 export default function Home(){
 
@@ -16,7 +17,7 @@ export default function Home(){
   }
 
   return (
-    <div className='flex items-center justify-center w-full min-h-screen '>
+    <div className='flex flex-col items-center justify-center w-full min-h-screen px-4'>
       <div className='flex flex-col items-center gap-10'>
         <div>
           <h1 className='text-center font-bold text-slate-900 text-7xl'>Serpientes y Escaleras</h1>
@@ -27,6 +28,7 @@ export default function Home(){
           <button className='border rounded px-4 py-2 hover:bg-gray-50 bg-white' onClick={()=>openModal()}>Compartir juego</button>
         </div>
       </div>
+      <Rules />
       <Transition appear show={isOpen} as={Fragment}>
         <Dialog as="div" className="relative z-10" onClose={closeModal}>
           <Transition.Child
@@ -53,23 +55,17 @@ export default function Home(){
                 leaveTo="opacity-0 scale-95"
               >
                 <Dialog.Panel className="w-full max-w-[330px] transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+                  <div className='w-full flex items-center justify-center my-10'>
+                    <QRCode value="https://serpientes-y-escaleras.netlify.app/" size={150} fgColor='#0f172a'  />
+                  </div>
                   <Dialog.Title
                     as="h3"
                     className="text-lg font-medium leading-6 text-gray-900"
                   >
                     <p className='text-center'>Ahora puedes compartir este juego con tus amigos</p>
                   </Dialog.Title>
-                  <div className='w-full flex items-center justify-center my-10'>
-                    <QRCode value="http://localhost:5173/game" size={150} fgColor='#0f172a'  />
-                  </div>
                   <div className="mt-4">
-                    <button
-                      type="submit"
-                      className="w-full inline-flex justify-center rounded border  bg-white px-4 py-2 text-sm font-medium hover:bg-gray-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-greeb-700 focus-visible:ring-offset-2"
-                      onClick={closeModal}
-                    >
-                      Continuar
-                    </button>
+                    <p className='text-center'>Escanea el código para acceder al sitio web.</p>
                   </div>
                 </Dialog.Panel>
               </Transition.Child>

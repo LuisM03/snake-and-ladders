@@ -10,7 +10,7 @@ export default function Dados(){
   const players = useAppSelector((state) => state.players)
   const dispatch = useAppDispatch()
   
-  const [isOpen, setIsOpen] = useState(true)
+  const [isOpen, setIsOpen] = useState(false)
 
   function closeModal() {
     setIsOpen(false)
