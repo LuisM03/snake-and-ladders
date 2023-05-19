@@ -89,7 +89,7 @@ export default function Dados({questions}: Props){
                   <form action="" onSubmit={
                     (e) => {
                       e.preventDefault();
-                      if(question.answer === answer){
+                      if(question != null && question.answer === answer){
                         dispatch(positionMove(number))
                         dispatch(growWins(1))
                         closeModal()

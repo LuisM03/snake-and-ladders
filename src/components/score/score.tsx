@@ -10,7 +10,7 @@ export default function Dados(){
   const players = useAppSelector((state) => state.players)
   const dispatch = useAppDispatch()
   
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(true)
 
   function closeModal() {
     setIsOpen(false)
@@ -64,21 +64,22 @@ export default function Dados(){
                   
                     <Dialog.Title
                       as="h3"
-                      className="text-lg font-medium leading-6 text-gray-900"
+                      className="text-lg font-medium leading-6 text-gray-900 text-center"
                     >
-                      Has Ganado!!
+                      ¡Has Ganado!
                     </Dialog.Title>
+                    <p className="text-center my-2">Haz finalizado el juego. Tu puntaje es de {scores.wins * 100} puntos, {scores.wins} preguntas ganadas y {scores.loss} preguntas perdidas.</p>
                     <div className="mt-4">
                       <button
                         type="submit"
-                        className="w-full inline-flex justify-center rounded-md border border-transparent bg-blue-500 px-4 py-2 text-sm font-medium text-white hover:bg-blue-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-greeb-700 focus-visible:ring-offset-2"
+                        className="w-full inline-flex justify-center rounded-md border border-transparent bg-slate-800 px-4 py-2 text-sm font-medium text-white hover:bg-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-greeb-700 focus-visible:ring-offset-2"
                         onClick={()=> {
                           dispatch(returnGame())
                           dispatch(finishedGames())
                           closeModal()
                         }}
                       >
-                        Enviar respuesta
+                        Reiniciar juego
                       </button>
                     </div>
 

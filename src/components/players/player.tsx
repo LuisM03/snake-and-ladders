@@ -8,12 +8,13 @@ export default function Player() {
     <img 
       src={Players} 
       alt="" 
-      className={`w-14 absolute transition ease-in-out bottom-1 -left-[60px] z-10`}
+      className={`w-6 md:w-14 absolute transition ease-in-out bottom-1 -left-[60px] z-10`}
       style={
         {
-          transform: `translate(${positions.x * 74}px, -${positions.y * 70}px)`
+          transform: `translate(${positions.x * 73}px, -${positions.y * 70}px)`
         }
       }
+      
     />
   )
 }
