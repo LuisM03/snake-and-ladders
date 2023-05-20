@@ -20,7 +20,7 @@ interface Props {
 export default function Dados({questions}: Props){
   const dispatch = useAppDispatch()
   const [number, setNumber] = useState(0)
-  const [question, setQuestion] = useState<Question>({id: '', question:'', answer: '', category:''}) 
+  const [question, setQuestion] = useState<Question>({id: '646389c4542586f05c55fe0f', question:'¿Quién es el padre de las matemáticas?', answer: 'arquimedes', category:'easy'}) 
   const [answer, setAnswer] = useState("")
   const players = useAppSelector((state) => state.players)
 
